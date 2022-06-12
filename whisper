@@ -1,57 +1,110 @@
-import requests
-import json
-import random
-import time
-
-
-def get_context():
-    context_list = [
-        "不喜歡的人的心機才是心機，喜歡的人的心機，那叫撒嬌",
-        "好好的呢，沒有廢......",
-        "嗯？怎麼？",
-        "把手機放下多充一會，我們可以去幹點別的",
-        "起床了，洗漱完到樓下集合",
-        "怎麼還沒睡？",
-        "我自己宿舍是懶得收拾......但你的不一樣",
-        "一人高考，全隊光榮",
-        "下了賽場上考場，十年寒窗不苦讀",
-        "磨刀不誤砍柴工，高考之後再打工",
-        "高考一次，幸福一生",
-    ]
-    text = random.choice(context_list)
-    return text
-
-
-def chat(chanel_list,authorization_list):
-    for authorization in authorization_list:
-        header = {
-            "Authorization": authorization,
-            "Content-Type": "application/json",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36",
-        }
-        for chanel_id in chanel_list:
-            msg = {
-                "content": get_context(),
-                "nonce": "82329451214{}33232234".format(random.randrange(0, 1000)),
-                "tts": False,
-            }
-            url = "https://discord.com/api/v9/channels/{}/messages".format(chanel_id)
-            try:
-                res = requests.post(url=url, headers=header, data=json.dumps(msg))
-                print(res.content)
-            except:
-                pass
-            continue
-        time.sleep(random.randrange(1, 3))
-
-
-if __name__ == "__main__":
-    chanel_list = ["985580815129923594"]
-    authorization_list = ["NjA1NDI0NDk5MjkwMjc1ODUw.YOG6cQ.zMaMye9d53I2K4GEJQflx963jQ0"]
-    while True:
-        try:
-            chat(chanel_list,authorization_list)
-            sleeptime = random.randrange(600,300)
-            time.sleep(sleeptime)
-        except:
-            break
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Discord_chat_bot.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "toc_visible": true,
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/FreeWhisper/FreeWhisper/blob/main/whisper\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "_7s4WsVY4U3D"
+      },
+      "outputs": [],
+      "source": [
+        "import requests\n",
+        "import json\n",
+        "import random\n",
+        "import time\n",
+        "\n",
+        "\n",
+        "def get_context():\n",
+        "    context_list = [\n",
+        "        \"不喜歡的人的心機才是心機，喜歡的人的心機，那叫撒嬌\",\n",
+        "        \"好好的呢，沒有廢......\",\n",
+        "        \"嗯？怎麼？\",\n",
+        "        \"把手機放下多充一會，我們可以去幹點別的\",\n",
+        "        \"起床了，洗漱完到樓下集合\",\n",
+        "        \"怎麼還沒睡？\",\n",
+        "        \"我自己宿舍是懶得收拾......但你的不一樣\",\n",
+        "        \"一人高考，全隊光榮\",\n",
+        "        \"下了賽場上考場，十年寒窗不苦讀\",\n",
+        "        \"磨刀不誤砍柴工，高考之後再打工\",\n",
+        "        \"高考一次，幸福一生\",\n",
+        "    ]\n",
+        "    text = random.choice(context_list)\n",
+        "    return text\n",
+        "\n",
+        "\n",
+        "def chat(chanel_list,authorization_list):\n",
+        "    for authorization in authorization_list:\n",
+        "        header = {\n",
+        "            \"Authorization\": authorization,\n",
+        "            \"Content-Type\": \"application/json\",\n",
+        "            \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36\",\n",
+        "        }\n",
+        "        for chanel_id in chanel_list:\n",
+        "            msg = {\n",
+        "                \"content\": get_context(),\n",
+        "                \"nonce\": \"82329451214{}33232234\".format(random.randrange(0, 1000)),\n",
+        "                \"tts\": False,\n",
+        "            }\n",
+        "            url = \"https://discord.com/api/v9/channels/{}/messages\".format(chanel_id)\n",
+        "            try:\n",
+        "                res = requests.post(url=url, headers=header, data=json.dumps(msg))\n",
+        "                print(res.content)\n",
+        "            except:\n",
+        "                pass\n",
+        "            continue\n",
+        "        time.sleep(random.randrange(1, 3))\n",
+        "\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    chanel_list = [\"985580815129923594\"]\n",
+        "    authorization_list = [\"NjA1NDI0NDk5MjkwMjc1ODUw.YOG6cQ.zMaMye9d53I2K4GEJQflx963jQ0\"]\n",
+        "    while True:\n",
+        "        try:\n",
+        "            chat(chanel_list,authorization_list)\n",
+        "            sleeptime = random.randrange(600,300)\n",
+        "            time.sleep(sleeptime)\n",
+        "        except:\n",
+        "            break"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        ""
+      ],
+      "metadata": {
+        "id": "bGJETDb6jJ01"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
